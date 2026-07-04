@@ -8,9 +8,11 @@
         <div class="col-md-8">
             <ul class="navbar-menu">
                 <li class="mr-3"><a routerLink="home">Home</a></li>
-                <li class="mr-3"><a (click)="ongousers()" >Users</a></li>
-                <li class="mr-3"><a (click)="ongoproducts()" >Products</a></li>
+                <li class="mr-3"><a (click)="ongousers()">Users</a></li>
+                <li class="mr-3"><a (click)="ongoproducts()">Products</a></li>
                 <li class="mr-3"><a (click)="gettofairs()">Fairs</a></li>
+
+                <button class="ml-3" mat-raised-button color="warn" (click)="onlogout()">LogOut</button>
             </ul>
         </div>
     </div>
