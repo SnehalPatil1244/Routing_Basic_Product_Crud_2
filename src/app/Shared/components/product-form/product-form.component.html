@@ -1,0 +1,59 @@
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="text-center p-3 bg-primary">{{isinEditmode ? 'Update Product' : 'Add Product'}}</h3>
+                <form [formGroup]="ProductForm" (ngSubmit)="onproductsubmit()">
+                    <div class="form-group">
+                        <label for="Name">Name*</label>
+                        <input type="text" formControlName="pname" class="form-control">
+                        <small *ngIf="ProductForm.get('pname')?.touched && ProductForm.get('pname')?.invalid">Name Is
+                            Requried Field.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="pprice">Price*</label>
+                        <input type="number" formControlName="pprice" class="form-control">
+                        <small *ngIf="ProductForm.get('pprice')?.touched && ProductForm.get('pprice')?.invalid">
+                            Price Is Requried
+                        </small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="status">Status*</label>
+                        <select formControlName="pstatus" type="text" class="form-control" id="pstatus">
+                            <option value="In-Progress">In-Progress</option>
+                            <option value="Dispatched">Dispatched</option>
+                            <option value="Delivered">Delivered</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="pdescription">Description*</label>
+                        <textarea formControlName="pdescription" class="form-control"></textarea>
+                        <small
+                            *ngIf="ProductForm.get('pdescription')?.touched && ProductForm.get('pdescription')?.invalid">
+                            Description Is Requried
+                        </small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pimage">Image*</label>
+                        <input type="text" formControlName="pimage" class="form-control">
+                        <small *ngIf="ProductForm.get('pimage')?.touched && ProductForm.get('pimage')?.invalid">
+                            Product Image Is Requried
+                        </small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="canReturn">Product Return*</label>
+                        <select type="text" formControlName="canReturn" class="form-control" id="canReturn">
+                            <option [ngValue]="1">Yes</option>
+                            <option [ngValue]="0">No</option>
+                        </select>
+                    </div>
+                    <button *ngIf="!isinEditmode" type="submit" class="btn  btn-sm btn-outline-primary w-100">Add Prodduct</button>
+                    <button *ngIf="isinEditmode" type="button" class="btn btn-sm btn-outline-primary w-100" (click)="onUpdate()"  [disabled]="DisalbleUpdatebtn">Update Product</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

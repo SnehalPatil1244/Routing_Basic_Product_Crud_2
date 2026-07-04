@@ -1,0 +1,79 @@
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './Shared/components/home/home.component';
+import { UserComponent } from './Shared/components/users/user.component';
+import { ProductComponent } from './Shared/components/product/product.component';
+import { FairsComponent } from './Shared/components/fairs/fairs.component';
+import { ProductDashboardComponent } from './Shared/components/product-dashboard/product-dashboard.component';
+import { ProductFormComponent } from './Shared/components/product-form/product-form.component';
+import { UserDashboardComponent } from './Shared/components/user-dashboard/user-dashboard.component';
+import { UserFormComponent } from './Shared/components/user-form/user-form.component';
+import { FairsDashBoardComponent } from './Shared/components/fairs-dash-board/fairs-dash-board.component';
+import { FairsDetailsComponent } from './Shared/components/fairs-details/fairs-details.component';
+import { AuthComponent } from './Shared/components/auth/auth.component';
+import { HomepageComponent } from './Shared/components/homepage/homepage.component';
+
+const routes: Routes = [
+  {
+    path: '',
+    component: AuthComponent
+  },
+  {
+    path: 'home',
+    component: HomepageComponent
+  },
+  {
+    path: 'users',
+    component: UserDashboardComponent,
+    children: [
+      {
+        path: 'adduser',
+        component: UserFormComponent
+      },
+      {
+        path: ':userId',
+        component: UserComponent
+      },
+      {
+        path: ':userId/edit',
+        component: UserFormComponent
+      },
+    ]
+  },
+
+
+  {
+    path: 'products',
+    component: ProductDashboardComponent,
+    children: [
+      {
+        path: 'addproduct',
+        component: ProductFormComponent
+      },
+      {
+        path: ':productId',
+        component: ProductComponent
+      },
+      {
+        path: ':productId/edit',
+        component: ProductFormComponent
+      },
+    ]
+  },
+  {
+    path: 'fairs',
+    component: FairsDashBoardComponent,
+    children: [
+      {
+        path: ':fairsId',
+        component: FairsDetailsComponent
+      }
+    ]
+  }
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
