@@ -12,6 +12,8 @@ import { AuthService } from '../../services/auth.service';
 })
 export class NavBarComponent implements OnInit {
 
+  userRole !: string
+
   constructor(private userservice: UserService,
     private productservice: ProductService,
     private fairservice: FairsService,
@@ -20,6 +22,12 @@ export class NavBarComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.userRole = this.authservice.getUserRole()!
+    this.authservice.isLoging$.subscribe({
+      next : res => {
+        this.userRole = res
+      }
+    })
   }
 
   ongoproducts() {

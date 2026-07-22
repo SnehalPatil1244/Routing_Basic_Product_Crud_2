@@ -14,7 +14,7 @@ export class UserFormComponent implements OnInit {
   isinEditMode: boolean = false
   UserForm !: FormGroup
   userId !: string
-  edituser !: Iuser
+  edituser?: Iuser
 
   constructor(private userservice: UserService,
     private snackbar: SnackbarService,
@@ -51,7 +51,7 @@ export class UserFormComponent implements OnInit {
           this.formcontrols['address'].get('permanent')?.patchValue(currentAdd)
           this.formcontrols['address'].get('permanent')?.disable()
         } else if (this.isinEditMode && !val) {
-          this.formcontrols['address'].get('permanent')?.patchValue(this.edituser.address.permanent)
+          this.formcontrols['address'].get('permanent')?.patchValue(this.edituser?.address.permanent)
           this.formcontrols['address'].get('permanent')?.enable()
 
         }
@@ -95,9 +95,10 @@ export class UserFormComponent implements OnInit {
   }
 
   addskillscontrol() {
-    let skillscontrol = new FormControl(null, [Validators.required])
-    this.skillsArr.push(skillscontrol)
-
+    if (this.skillsArr.length < 5) {
+      let skillscontrol = new FormControl(null, [Validators.required])
+      this.skillsArr.push(skillscontrol)
+    }
   }
 
   get formcontrols() {
@@ -141,7 +142,10 @@ export class UserFormComponent implements OnInit {
           }
           this.skillsArr.clear()
           this.edituser.skills.forEach(ele => {
-            let control = new FormControl(ele)
+            let control = new FormControl({
+              value: ele,
+              disabled: res.userRole === 'Candidate'
+            })
             this.skillsArr.push(control)
           })
 
@@ -168,6 +172,18 @@ export class UserFormComponent implements OnInit {
         })
     }
 
+
+  }
+  onRemoveSkills(i: number) {
+    this.skillsArr.removeAt(i)
+
+  }
+
+  canDeactivate(): boolean {
+    if (this.UserForm.dirty && this.isinEditMode) {
+      return confirm(`Are You Sure You Want To Discard The Changes !!`)
+    }
+    return true
   }
 }
 

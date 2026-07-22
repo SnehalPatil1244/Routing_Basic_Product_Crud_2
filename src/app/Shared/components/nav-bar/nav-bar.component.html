@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="navbar-custom px-3">
         <div class="col-md-4">
-            <a class="navbar-brand fw-bold fs-3" routerLink="">
+            <a class="navbar-brand fw-bold fs-3" routerLink="home">
                 NavBar
             </a>
         </div>
@@ -11,6 +11,9 @@
                 <li class="mr-3"><a (click)="ongousers()">Users</a></li>
                 <li class="mr-3"><a (click)="ongoproducts()">Products</a></li>
                 <li class="mr-3"><a (click)="gettofairs()">Fairs</a></li>
+                <strong class="text-black badge-warning p-2">
+                    {{userRole}}
+                </strong>
 
                 <button class="ml-3" mat-raised-button color="warn" (click)="onlogout()">LogOut</button>
             </ul>
