@@ -57,3 +57,15 @@
 .navbar-menu li a:hover::after {
     width: 100%;
 }
+.active-link {
+    color: #00e5ff !important;
+    font-weight: bold;
+}
+
+.active-link::after {
+    width: 100% !important;
+}
+
+.navbar-menu li a.active-link::after {
+    width: 100%;
+}
