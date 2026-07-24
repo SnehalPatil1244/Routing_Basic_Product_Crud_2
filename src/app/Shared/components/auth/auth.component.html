@@ -7,13 +7,15 @@
                     <div class="form-group">
                         <label for="email" class="text-primary">Email*</label>
                         <input type="text" formControlName="email" class="form-control">
-                        <small *ngIf="l['email'].touched && l['email'].hasError('required')">Email Has Required
+                        <small class="text-danger" *ngIf="l['email'].touched && l['email'].hasError('required')">Email
+                            Has Required
                             Field...</small>
                     </div>
                     <div class="form-group">
                         <label for="password" class="text-primary">Password*</label>
                         <input type="text" formControlName="password" class="form-control">
-                        <small *ngIf="l['password'].touched && l['password'].hasError('required')">Password Has Required
+                        <small class="text-danger"
+                            *ngIf="l['password'].touched && l['password'].hasError('required')">Password Has Required
                             Field...</small>
                     </div>
 
@@ -28,13 +30,15 @@
                     <div class="form-group">
                         <label for="email">Email*</label>
                         <input type="text" formControlName="email" class="form-control">
-                        <small *ngIf="s['email'].touched && s['email'].hasError('required')">Email Has Required
+                        <small class="text-danger" *ngIf="s['email'].touched && s['email'].hasError('required')">Email
+                            Has Required
                             Field...</small>
                     </div>
                     <div class="form-group">
                         <label for="password" class="text-primary">Password*</label>
                         <input type="text" formControlName="password" class="form-control">
-                        <small *ngIf="s['password'].touched && s['password'].hasError('required')">Password Has Required
+                        <small class="text-danger"
+                            *ngIf="s['password'].touched && s['password'].hasError('required')">Password Has Required
                             Field...</small>
                     </div>
 
@@ -45,7 +49,8 @@
                             <option value="admin">Admin</option>
                             <option value="superAdmin">Super Admin</option>
                         </select>
-                        <small *ngIf="s['userRole'].touched && s['userRole'].hasError('required')">UserRole Has Required
+                        <small class="text-danger"
+                            *ngIf="s['userRole'].touched && s['userRole'].hasError('required')">UserRole Has Required
                             Field...</small>
                     </div>
                     <button mat-raised-button color="primary" class="w-100 mb-2">Sing Up</button>
