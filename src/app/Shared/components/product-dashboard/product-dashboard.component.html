@@ -9,7 +9,7 @@
         <div class="col-md-4 mb-3">
             <mat-card>
                 <ul class="list-group">
-                    <li class="list-group-item d-flex justify-content-between"
+                    <li class="list-group-item d-flex justify-content-between product-item"
                         *ngFor="let pro of products; trackBy: trackByFun" [routerLink]="['/products', pro.pid]"
                         routerLinkActive="active" [queryParams]="{ cr: pro.canReturn }">
                         <strong>{{pro.pname}}</strong>
